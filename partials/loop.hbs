@@ -1,0 +1,28 @@
+<div class="loop-section global-section">
+	<div class="loop-wrap global-wrap global-flex{{#is "tag"}} loop-archive global-hash-grid{{/is}}">
+
+
+		{{!-- Changing the value [to="number"] to another - will display a different number of posts in the first section --}}
+
+		{{#foreach posts visibility="all" to="10"}}
+		<article class="loop-item global-item global-flex global-aos{{#is "tag"}}{{^is "paged"}} is-archive{{#if @first}} is-double{{/if}}{{/is}}{{/is}}{{#is "paged"}} is-archive{{/is}}{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}" data-aos="fade-up">
+			{{>loop_item}}
+		</article>
+		{{/foreach}}
+
+		{{^is "tag,paged"}}
+		<small class="loop-heading global-heading" data-aos="fade-up">
+		{{t "But wait, there's more!"}}
+		</small>
+		{{/is}}
+
+
+		{{!-- Value [from="number"] must be the next number after [to="number"] - otherwise the theme will not work properly --}}
+
+		{{#foreach posts visibility="all" from="11"}}
+		<article class="loop-item global-item global-flex global-aos is-archive{{^is "tag,paged"}}{{#if @first}} is-double{{/if}}{{/is}}{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}" data-aos="fade-up">
+			{{>loop_item}}
+		</article>
+		{{/foreach}}
+	</div>
+</div>

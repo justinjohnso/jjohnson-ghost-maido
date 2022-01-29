@@ -1,0 +1,37 @@
+{{!< default}}
+{{#post}}
+<span class="global-color-label{{>colors_light}}{{>colors_dark}}"></span>
+<article class="post-section">
+	<div class="post-header global-flex{{#if feature_image}} is-image{{/if}}">
+		{{#if feature_image}}
+			<div class="custom-image global-bg-image" style="background-image: url({{feature_image}})"></div>
+			<div class="global-cover global-bg-image{{#if feature_image}} custom-cover{{/if}}" style="background-image: url({{feature_image}})"></div>
+		{{/if}}
+		<div class="post-title-wrap global-flex">
+			<div class="post-title-content">
+				<h1 class="post-title">{{title}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="post-content{{^if access}} members-content{{/if}}">
+		{{#if access}}
+		{{content}}
+		{{!-- {{>post_share}} --}}
+		{{else}}
+		{{>members_cta}}
+		{{/if}}
+	</div>
+</article>
+{{!-- {{#if access}}
+<div id="indicator" class="post-indicator"></div>
+{{/if}} --}}
+{{>post_related}}
+{{!-- {{>post_nextprev}} --}}
+{{!-- <div class="comments-section global-section">
+	<div class="comments-wrap">
+		<div class="comments-content">
+			{{>services/disqus}}
+		</div>
+	</div>
+</div> --}}
+{{/post}}

@@ -1,0 +1,24 @@
+<footer class="footer-section global-footer global-section{{#if @labs.members}}{{^if @member}} is-subscribe{{/if}}{{/if}}">
+	<div class="footer-wrap global-wrap global-flex">
+		<div class="footer-nav">
+			<nav>
+				<ul>
+					{{navigation}}
+				</ul>
+			</nav>
+		</div>
+		<div class="footer-icons global-flex">
+			{{#if @site.github}}
+			<a href="{{github}}" aria-label="link Github">{{>icons/social/github}}</a>
+			{{/if}}
+			{{#if @site.spotify}}
+			<a href="{{spotify}}" aria-label="link Spotify">{{>icons/social/spotify}}</a>
+			{{/if}}
+			{{>footer_icons}}
+		</div>
+		<div class="footer-copyright">
+			<a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}} — {{t "All Right Reserved"}}
+			{{!-- {{{t "Published with {ghost_site}" ghost_site="<a href=\"https://ghost.org\">Ghost</a>"}}}. --}}
+		</div>
+	</div>
+</footer>

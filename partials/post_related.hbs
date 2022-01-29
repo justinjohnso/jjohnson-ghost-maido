@@ -1,0 +1,23 @@
+{{#if primary_tag}}
+<div class="post-content">
+	<hr>
+</div>
+<div class="related-section pinned-section global-section global-flex">
+	{{#get "posts" limit="4" filter="tags:{{primary_tag.slug}}+id:-{{id}}" include="tags" as |related-posts|}}
+	{{#if related-posts}}
+	<div class="related-wrap pinned-wrap global-flex">
+		<div class="global-flex">
+			{{#foreach posts visibility="all"}}
+			{{#if @first}}
+			<small class="related-heading global-heading">
+			{{t "Similar Projects"}}
+			</small>
+			{{/if}}
+			{{>pinned_post}}
+			{{/foreach}}
+		</div>
+	</div>
+	{{/if}}
+	{{/get}}
+</div>
+{{/if}}

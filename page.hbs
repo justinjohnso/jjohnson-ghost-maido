@@ -1,0 +1,25 @@
+{{!< default}}
+{{#post}}
+<span class="global-color-label{{>colors_light}}{{>colors_dark}}"></span>
+<article class="post-section">
+	<div class="post-header global-flex{{#if feature_image}} is-image{{/if}}">
+		{{#if feature_image}}
+		<div class="post-image-wrap global-image">
+			{{>images/feature_img_post}}
+		</div>
+		{{/if}}
+		<div class="post-title-wrap global-flex">
+			<div class="post-title-content">
+				<h1 class="post-title">{{title}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="post-content{{^if access}} members-content{{/if}}">
+		{{#if access}}
+		{{content}}
+		{{else}}
+		{{>members_cta}}
+		{{/if}}
+	</div>
+</article>
+{{/post}}

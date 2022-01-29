@@ -1,0 +1,40 @@
+<header class="header-section global-section">
+	<div class="header-wrap global-wrap global-flex">
+		<div class="header-logo global-flex">
+			{{#is "post, page, author, tag"}}
+			{{#if @site.logo}}
+			<a class="is-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
+			{{else}}
+			<a class="no-logo" href="{{@site.url}}">{{@site.title}}</a>
+			{{/if}}
+			{{else}}
+			{{#if @site.logo}}
+			<h1 class="is-logo"><a href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a></h1>
+			{{else}}
+			<h1 class="no-logo"><a href="{{@site.url}}">{{@site.title}}</a></h1>
+			{{/if}}
+			{{/is}}
+		</div>
+		{{#if @site.navigation}}
+		<div class="header-nav global-flex">
+			<input id="toggle" type="checkbox">
+			<label for="toggle" class="nav-label hamburger">
+				<span class="hamburger-inner">
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+				</span>
+			</label>
+			<div class="nav-toggle">
+				<nav>
+					<ul>
+						{{navigation}}
+						{{>members_login_panel}}
+						{{!-- <li id="search-open" class="search-open"><span>{{t "Search"}}</span>{{>icons/site/search}}</li> --}}
+					</ul>
+				</nav>
+			</div>
+		</div>
+		{{/if}}
+	</div>
+</header>

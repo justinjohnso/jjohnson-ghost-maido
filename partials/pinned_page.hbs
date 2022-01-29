@@ -1,0 +1,14 @@
+<div class="pinned-item global-item global-flex{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+	<a href="{{url}}" class="global-link" aria-label="pinned {{title}}"></a>
+	{{!-- <div class="global-label">
+		{{t "Pinned"}}
+	</div> --}}
+	<div class="pinned-content">
+		<h3 class="pinned-title">{{title}}</h3>
+	</div>
+	{{#if feature_image}}
+	<div class="pinned-image color-image global-image">
+		{{>images/feature_img_pinned}}
+	</div>
+	{{/if}}
+</div>

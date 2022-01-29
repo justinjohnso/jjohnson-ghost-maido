@@ -1,0 +1,36 @@
+<aside class="nextprev-section global-section">
+	<div class="nextprev-wrap global-flex{{^next_post}} is-one{{/next_post}}{{^prev_post}} is-one{{/prev_post}}">
+		{{#next_post}}
+		<div class="next-wrap global-item global-flex{{^next_post}} is-one{{/next_post}}{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+			<a href="{{url}}" class="next-link global-link" aria-label="next Post"></a>
+			<section>
+				<small class="nextprev-heading next-heading global-heading">
+				{{>icons/site/arrow}}{{t "Newer Post"}}
+				</small>
+				<h3 class="nextprev-title">{{title}}</h3>
+				{{#if feature_image}}
+				<div class="nextprev-image color-image global-image">
+					{{>images/feature_img_nextprev}}
+				</div>
+				{{/if}}
+			</section>
+		</div>
+		{{/next_post}}
+		{{#prev_post}}
+		<div class="prev-wrap global-item global-flex{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+			<a href="{{url}}" class="prev-link global-link" aria-label="previous Post"></a>
+			<section>
+				<small class="nextprev-heading prev-heading global-heading">
+				{{t "Older Post"}}{{>icons/site/arrow}}
+				</small>
+				<h3 class="nextprev-title">{{title}}</h3>
+				{{#if feature_image}}
+				<div class="nextprev-image color-image global-image">
+					{{>images/feature_img_nextprev}}
+				</div>
+				{{/if}}
+			</section>
+		</div>
+		{{/prev_post}}
+	</div>
+</aside>

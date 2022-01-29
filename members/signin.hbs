@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{@site.title}} — {{t "Sign in"}}</title>
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{>services/google_fonts}}
+        <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+        {{ghost_head}}
+    </head>
+    <body class="custom-subscribe{{#get "tags" limit="all" filter="visibility:internal" as |tags|}}{{#tags}} global-{{slug}}{{/tags}}{{/get}}">
+        <div class="custom-wrap global-flex">
+            {{#if @site.cover_image}}
+            <div class="global-cover global-bg-image{{#if @site.cover_image}} custom-cover{{/if}}" style="background-image: url({{@site.cover_image}})"></div>
+            {{/if}}
+            {{#get "posts" limit="5" filter="feature_image:-null" as |gallery|}}
+            {{#if gallery}}
+            <div class="custom-image">
+                <div class="custom-gallery global-flex">
+                    <div class="custom-gallery-row is-one global-flex">
+                        {{#foreach posts visibility="all" to="1"}}
+                        <div class="custom-gallery-image global-bg-image" style="background-image: url({{feature_image}})"></div>
+                        {{/foreach}}
+                    </div>
+                    {{#foreach posts visibility="all" from="2" to="2"}}
+                    <div class="custom-gallery-row is-two global-flex">
+                        {{/foreach}}
+                        {{#foreach posts visibility="all" from="2" to="3"}}
+                        <div class="custom-gallery-image global-bg-image" style="background-image: url({{feature_image}})"></div>
+                        {{/foreach}}
+                        {{#foreach posts visibility="all" from="2" to="2"}}
+                    </div>
+                    {{/foreach}}
+                    {{#foreach posts visibility="all" from="4" to="4"}}
+                    <div class="custom-gallery-row is-three global-flex">
+                        {{/foreach}}
+                        {{#foreach posts visibility="all" from="4" to="5"}}
+                        <div class="custom-gallery-image global-bg-image" style="background-image: url({{feature_image}})"></div>
+                        {{/foreach}}
+                        {{#foreach posts visibility="all" from="4" to="4"}}
+                    </div>
+                    {{/foreach}}
+                </div>
+            </div>
+            {{/if}}
+            {{/get}}
+            <div class="custom-flex global-flex">
+                <div class="custom-header">
+                    <a href="{{@site.url}}" class="custom-heading global-heading">{{>icons/site/arrow}}{{t "Back to Homepage"}}</a>
+                </div>
+                <div class="custom-content global-flex">
+                    <div class="subscribe-content">
+                        <form data-members-form="signin" class="subscribe-form">
+                            <h3 class="subscribe-title">{{t "Welcome back!"}}</h3>
+                            <div class="subscribe-ityped">
+                                <span id="ityped"></span>
+                            </div>
+                            <input data-members-email class="subscribe-input global-input" type="email" name="email" placeholder="{{t "Your email address"}}" aria-label="{{t "Your email address"}}">
+                            <button class="subscribe-button global-button" type="submit">{{t "Send login link"}}</button>
+                            <script>
+                            const iTypedText = ['{{t "Sign into your account to get to the good stuff"}}'];
+                            </script>
+                        </form>
+                        <small class="subscribe-question global-question">{{t "Don't have an account yet?"}} <a href="{{@site.url}}/signup/">{{t "Sign up"}}</a></small>
+                        {{>members_subscribe_alerts}}
+                        <div class="subscribe-success">
+                            <h3 class="subscribe-title">{{t "Great!"}}</h3>
+                            <p>{{t "Check your inbox and click the link to complete signin"}}</p>
+                            <a href="{{@site.url}}" class="global-button">{{t "Back to Homepage"}}</a>
+                        </div>
+                    </div>
+                </div>
+                {{#if @site.description}}
+                <div class="custom-footer">
+                    <a href="{{@site.url}}">{{@site.title}}.</a>
+                    <span>{{@site.description}}.</span>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <script src="{{asset "js/global.js"}}"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            body.classList.add("is-loaded")
+        })
+        </script>
+        {{ghost_foot}}
+    </body>
+</html>

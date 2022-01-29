@@ -1,0 +1,90 @@
+{{!< default}}
+{{#post}}
+{{#if feature_image}}
+<div class="archive-cover global-cover global-bg-image" style="background-image: url({{feature_image}})"></div>
+{{else}}
+{{#if @site.cover_image}}
+<div class="global-cover global-bg-image" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/if}}
+{{#if @member.paid}}
+<div class="account-section archive-section global-section">
+    <div class="archive-wrap global-wrap">
+        <div class="archive-title-wrap">
+            {{#if @member.name}}
+            <h1 class="archive-title global-title">{{@member.name}}</h1>
+            {{else}}
+            <h1 class="archive-title global-title">{{@member.email}}</h1>
+            {{/if}}
+            <p class="account-subtitle">
+                {{t "Nice, you're a paying subscriber!"}}
+            </p>
+            {{#if custom_excerpt}}
+            <p class="account-excerpt archive-description">{{{custom_excerpt}}}</p>
+            {{/if}}
+            <p class="account-excerpt archive-description">
+                {{t "You've an active account with access to all areas. You're all set, but if you need any help, get in touch with us and we'd be happy to help."}}
+            </p>
+        </div>
+    </div>
+</div>
+{{#get "posts" limit="all" include="authors,tags" as |paid-posts|}}
+{{#if paid-posts}}
+<div class="account-loop loop-section global-section">
+    <div class="loop-wrap global-wrap global-flex loop-archive global-hash-grid">
+        {{#foreach paid-posts visibility="paid" limit="1"}}
+        <span class="membership-heading global-heading">
+            {{t "The latest posts only for paying subscribers"}}
+        </span>
+        {{/foreach}}
+        {{#foreach paid-posts visibility="paid" limit="5"}}
+        <article class="loop-item global-item global-flex is-archive{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+            {{>loop_item}}
+        </article>
+        {{/foreach}}
+    </div>
+</div>
+{{/if}}
+{{/get}}
+{{else if @member}}
+<div class="account-section archive-section global-section">
+    <div class="archive-wrap global-wrap">
+        <div class="archive-title-wrap">
+            {{#if @member.name}}
+            <h1 class="archive-title global-title">{{@member.name}}</h1>
+            {{else}}
+            <h1 class="archive-title global-title">{{@member.email}}</h1>
+            {{/if}}
+            <p class="account-subtitle">
+                {{t "Currently, you're not a paying subscriber."}}
+            </p>
+            {{#if custom_excerpt}}
+            <p class="account-excerpt archive-description">{{{custom_excerpt}}}</p>
+            {{/if}}
+            <p class="account-excerpt archive-description">
+                {{t "You've an active account with access to posts for subscribers only. Upgrade your account and get access to the full library of posts."}}
+            </p>
+        </div>
+    </div>
+</div>
+<div class="loop-section global-section">
+    <div class="membership-cards loop-wrap global-wrap global-flex">
+        <span class="membership-heading global-heading">{{t "More posts? Choose your plan"}}</span>
+        {{>members_plan_monthly}}
+        {{>members_plan_yearly}}
+    </div>
+</div>
+{{else}}
+<script>
+window.addEventListener("load", function(event) {
+  window.location = '{{@site.url}}/signin/';
+})
+</script>
+{{/if}}
+{{/post}}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const body = document.body;
+  body.classList.add("is-account")
+})
+</script>

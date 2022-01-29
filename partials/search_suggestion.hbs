@@ -1,0 +1,32 @@
+<div class="suggestion-section">
+	{{#get "tags" limit="15" filter="visibility:public" include="count.posts" order="count.posts desc"}}
+	<div class="suggestion-tags global-tags">
+		{{#foreach tags separator=""}}
+		{{#if @first}}
+		<h3 class="suggestion-title">{{t "May we suggest a tag?"}}</h3>
+		{{/if}}
+		<a href="{{url}}">{{name}}</a>
+		{{/foreach}}
+	</div>
+	{{/get}}
+	{{#get "authors" limit="all" include="count.posts" order="count.posts desc"}}
+	<div class="suggestion-authors global-flex">
+		{{#foreach authors}}
+		{{#if @first}}
+		<h3 class="suggestion-title">{{t "May we suggest an author?"}}</h3>
+		{{/if}}
+		<div class="suggestion-item global-flex{{#if @last}} is-last{{/if}}">
+			<a href="{{url}}" class="global-link" aria-label="{{name}} page"></a>
+			<div class="suggestion-content global-flex">
+				{{#if profile_image}}
+				<div class="suggestion-image global-image">
+					{{>images/profile_img_author}}
+				</div>
+				{{/if}}
+				<h5 class="suggestion-name{{#if profile_image}} is-image{{/if}}">{{name}}</h5>
+			</div>
+		</div>
+		{{/foreach}}
+	</div>
+	{{/get}}
+</div>

@@ -1,0 +1,33 @@
+{{!< default}}
+{{#post}}
+{{#if feature_image}}
+<div class="archive-cover global-cover global-bg-image" style="background-image: url({{feature_image}})"></div>
+{{else}}
+{{#if @site.cover_image}}
+<div class="global-cover global-bg-image" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/if}}
+<div class="membership-section global-section">
+    <div class="global-wrap">
+        <div class="membership-content">
+            <h1 class="membership-title">{{title}}</h1>
+            <h3 class="membership-subtitle">
+            {{t "Unlock full access to {blog_title} and see the entire library of subscribers-only content & updates" blog_title=@site.title}}
+            </h3>
+            <span class="membership-heading global-heading">
+                {{t "Choose your plan"}}
+            </span>
+        </div>
+    </div>
+</div>
+{{/post}}
+<div class="loop-section global-section">
+    <div class="membership-cards loop-wrap global-wrap global-flex">
+        {{>members_plan_free}}
+        {{>members_plan_monthly}}
+        {{>members_plan_yearly}}
+    </div>
+    <div class="membership-footer">
+        <small class="global-question">{{t "Don't have an account yet?"}} <a href="{{@site.url}}/signup/">{{t "Sign up"}}</a></small>
+    </div>
+</div>

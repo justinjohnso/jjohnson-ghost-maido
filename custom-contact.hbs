@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{@site.title}} — {{meta_title}}</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{{>services/google_fonts}}
+		<link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+		{{ghost_head}}
+	</head>
+	<body class="{{body_class}} custom-contact custom-subscribe{{#get "tags" limit="all" filter="visibility:internal" as |tags|}}{{#tags}} global-{{slug}}{{/tags}}{{/get}}">
+		<div class="custom-wrap global-flex">
+			{{#post}}
+			{{#if feature_image}}
+			<div class="custom-image global-bg-image" style="background-image: url({{feature_image}})"></div>
+			<div class="global-cover global-bg-image{{#if feature_image}} custom-cover{{/if}}" style="background-image: url({{feature_image}})"></div>
+			{{else}}
+			{{#if @site.cover_image}}
+			<div class="global-cover global-bg-image" style="background-image: url({{@site.cover_image}})"></div>
+			{{/if}}
+			{{/if}}
+			<div class="custom-flex global-flex">
+				{{!-- <div class="custom-header">
+					<a href="{{@site.url}}" class="custom-heading global-heading">{{>icons/site/arrow}}{{t "Back to Homepage"}}</a>
+				</div> --}}
+				{{>header}}
+				<div class="custom-content global-flex">
+					<div class="subscribe-content">
+						<h3 class="subscribe-title">{{title}}</h3>
+						<div class="subscribe-ityped">
+							<span id="ityped"></span>
+						</div>
+							<div class="post-content" style="padding: 10px 0; text-align:left;">
+								{{content}}
+							</div>
+							<form method="POST" action={{>services/formspree}}>
+								<input class="contact-name contact-input global-input" aria-label="{{t "Name"}}" required type="text" name="name" placeholder="{{t "Name"}}">
+								<input class="contact-email contact-input global-input" aria-label="{{t "Email address"}}" required type="email" name="email" placeholder="{{t "Email address"}}">
+								<input class="contact-subject contact-input global-input" aria-label="{{t "Subject"}}" required type="text" name="subject" placeholder="{{t "Subject"}}">
+								<textarea class="contact-message global-textarea" aria-label="{{t "Your message"}}" required name="message" placeholder="{{t "Your message"}}"></textarea>
+								<button class="global-button" type="submit">{{t "Send message"}}</button>
+								<script>
+								const iTypedText = ['{{t "Let’s collaborate!"}}','{{t "Drop me a line!"}}'];
+								</script>
+							</form>
+						</div>
+					</div>
+				</div>
+				{{#if @site.description}}
+				{{!-- <div class="custom-footer">
+					<a href="{{@site.url}}">{{@site.title}}</a>
+					<span>{{@site.description}}</span>
+				</div> --}}
+				{{>footer}}
+				{{/if}}
+			</div>
+			{{/post}}
+		</div>
+		<script src="{{asset "js/global.js"}}"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const body = document.body;
+			body.classList.add("is-loaded")
+		})
+		</script>
+		{{ghost_foot}}
+	</body>
+</html>

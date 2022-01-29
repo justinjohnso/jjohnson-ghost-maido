@@ -1,0 +1,24 @@
+<div id="search-overlay" class="search-overlay"></div>
+<div id="search" class="search-section">
+    <button id="search-close" class="search-close" aria-label="search close">{{>icons/site/close}}</button>
+    <div class="search-wrap">
+        <form class="search-form" onsubmit="return false">
+            <input id="search-input" class="global-input" type="text" placeholder="{{t "Type your keywords"}}" aria-label="{{t "Type your keywords"}}">
+        </form>
+        <div class="search-meta">
+            <span id="search-info">{{t "Please enter at least 3 characters"}}</span>
+            <span id="search-counter" class="is-hide">
+                <span id="search-counter-results">0</span>
+                {{t "Results for your search"}}
+            </span>
+        </div>
+        <div id="search-results" class="search-results"></div>
+    </div>
+    {{>search_suggestion}}
+</div>
+<script>
+const searchPublished = '{{t "Published"}}',
+      searchUrl = '{{@site.url}}',
+      searchKey = {{>search_api_key}},
+      searchAPI = searchUrl+'/ghost/api/v3/content/posts/?key='+searchKey+'&limit=all&formats=plaintext&fields=url,title,published_at,excerpt,visibility';
+</script>

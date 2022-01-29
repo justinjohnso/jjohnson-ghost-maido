@@ -1,0 +1,24 @@
+<div class="share-section">
+	<div class="share-wrap">
+		<small class="share-heading global-heading">
+		{{t "Share this Post"}}
+		</small>
+		<div class="share-icons">
+			<a href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+				onclick="window.open(this.href, 'share-twitter', 'width=580,height=300');return false;" aria-label="share Twitter">
+				{{>icons/social/twitter}}
+			</a>
+			<a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+				onclick="window.open(this.href, 'share-facebook','width=580,height=300');return false;" aria-label="share Facebook">
+				{{>icons/social/facebook}}
+			</a>
+			<a id="copy" class="share-copy" data-clipboard-target="#share-input" aria-label="copy link">
+				{{>icons/site/copy}}
+			</a>
+			<span class="share-alert">
+			{{t "The link has been copied!"}}
+		</span>
+		</div>
+		<input id="share-input" class="share-input" type="text" value="{{url absolute="true"}}" aria-hidden="true">
+	</div>
+</div>

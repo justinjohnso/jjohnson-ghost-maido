@@ -1,0 +1,27 @@
+<div class="members-cta-blur {{visibility}}">
+	<p aria-hidden="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget augue quam. Suspendisse feugiat eros dapibus, auctor nulla eu, ultrices nibh. Aliquam felis justo, laoreet non sapien sit amet, vestibulum auctor est. Suspendisse sed accumsan urna. Fusce at rutrum augue. Curabitur rhoncus varius mauris eu feugiat. Curabitur ultrices orci libero. Donec ac sem ac nisi vulputate condimentum. Aliquam felis justo, laoreet non sapien sit amet. Donec eget augue quam. Suspendisse feugiat eros dapibus.</p>
+	<p aria-hidden="true">Curabitur ultrices orci libero. Donec ac sem ac nisi vulputate condimentum. Aliquam felis justo, laoreet non sapien sit amet. Donec eget augue quam. Suspendisse feugiat eros dapibus. Curabitur rhoncus varius mauris eu feugiat. Curabitur ultrices orci libero. Donec ac sem ac nisi vulputate condimentum. Aliquam felis justo, laoreet non sapien sit amet. Donec eget augue quam. Suspendisse feugiat eros dapibus.</p>
+</div>
+<div class="members-cta members-cta-paid-members {{visibility}}">
+	<h2 class="members-cta-text-color">{{t "This post is for paying subscribers only"}}</h2>
+	{{#if @member}}
+	<p class="members-cta-text-color">
+		{{t "Upgrade your account to read the post and get access to the full library of posts for paying subscribers only."}}
+	</p>
+	<a class="members-cta-button global-button" href="{{@site.url}}/account/" class="members-cta-text-color">{{t "See plans"}}</a>
+	{{else}}
+	<p class="members-cta-text-color">
+		{{t "Sign up now and upgrade your account to read the post and get access to the full library of posts for paying subscribers only."}}
+	</p>
+	<a class="members-cta-button global-button" href="{{@site.url}}/signup/">{{t "Sign up now"}}</a>
+	<small class="members-cta-question members-cta-text-color global-question">{{t "Already have an account?"}} <a href="{{@site.url}}/signin/" class="members-cta-text-color">{{t "Sign in"}}</a></small>
+	{{/if}}
+</div>
+<div class="members-cta members-cta-members {{visibility}}">
+	<h2 class="members-cta-text-color">{{t "This post is for subscribers only"}}</h2>
+	<p class="members-cta-text-color">
+		{{t "Sign up now to read the post and get access to the full library of posts for subscribers only."}}
+	</p>
+	<a class="members-cta-button global-button" href="{{@site.url}}/signup/">{{t "Sign up now"}}</a>
+	<small class="members-cta-question members-cta-text-color global-question">{{t "Already have an account?"}} <a href="{{@site.url}}/signin/" class="members-cta-text-color">{{t "Sign in"}}</a></small>
+</div>

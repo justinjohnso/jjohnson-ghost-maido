@@ -1,0 +1,49 @@
+{{!< default}}
+{{#tag}}
+{{#if feature_image}}
+<div class="archive-cover global-cover global-bg-image" style="background-image: url({{feature_image}})"></div>
+{{else}}
+{{#if @site.cover_image}}
+<div class="global-cover global-bg-image" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/if}}
+<div class="archive-section global-section">
+	<div class="archive-wrap global-wrap">
+		<div class="global-flex">
+			<div class="archive-title-wrap global-flex">
+				<h1 class="archive-title global-title">{{name}}</h1>
+				{{#if description}}
+				<p class="archive-description">{{description}}</p>
+				{{/if}}
+			</div>
+			<div class="archive-meta global-flex">
+				<div class="archive-counter">
+					<div>
+						<span>{{../pagination.total}}</span>
+						<small class="global-heading">
+						{{plural ../pagination.total empty=(t "No projects") singular=(t "Project") plural=(t "Projects")}}
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/tag}}
+<div class="loop-section global-section global-aos" data-aos="fade-up" style="margin: 20px 0 0 0;">
+	<div class="loop-wrap global-wrap global-flex loop-archive global-hash-grid">
+		<div class="post-content loop-item global-item" style="min-height: 0; padding: 0; text-align:left; max-width: 100vw; background-color: rgba(0,0,0,0.0)">
+			<figure class="kg-card kg-bookmark-card" style="margin: 4px 0;">
+				<a class="kg-bookmark-container" href="https://drive.google.com/open?id=1uNDodKMZ7vL3U8L6vmjNvRfw1KDANV5g">
+					<div class="kg-bookmark-content">
+						<div class="kg-bookmark-title">Resume - Sound Design [PDF]</div>
+						<div class="kg-bookmark-description">Past credits include: Ghost Party (Dacha Theatre, Seattle), Behold The Dreamers (Book-It Theatre, Seattle), Cherubim (NYC Fringe) and My Lingerie Play (Rattlestick Playwrights Theater, NYC).</div>
+					</div>
+				</a>
+			</figure>
+		</div>
+	</div>
+</div>
+
+{{>loop}}
+{{pagination}}

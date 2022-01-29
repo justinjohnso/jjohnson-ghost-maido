@@ -1,0 +1,44 @@
+{{#if @labs.members}}
+<div class="members-notification subscribe-success">
+	{{t "You've successfully subscribed to {blog_title}" blog_title=@site.title}}
+</div>
+<div class="members-notification signin-success">
+	{{t "Welcome back! You've successfully signed in."}}
+</div>
+<div class="members-notification signup-success">
+	{{t "Great! You've successfully signed up."}}
+</div>
+<div class="members-notification checkout-success">
+	{{t "Success! Your account is fully activated, you now have access to all content."}}
+</div>
+{{#contentFor "members_notifications_script"}}
+<script>
+/* Notifications
+   –––––––––––––––––––––––––––––––––––––––––––––––––––– 
+   Website : ghost.org
+   Repo    : github.com/tryghost
+   Author  : Ghost
+   License : MIT
+   –––––––––––––––––––––––––––––––––––––––––––––––––––– */
+function getParameterByName(e,n){n||(n=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var r=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(n);return r?r[2]?decodeURIComponent(r[2].replace(/\+/g," ")):"":null}
+
+/* Custom settings for notifications */
+const action = getParameterByName('action'),
+      stripe = getParameterByName('stripe'),
+	  body = document.body;
+
+if (action == 'subscribe') {
+	body.classList.add("members-notification-subscribe");
+}
+if (action == 'signin') {
+	body.classList.add("members-notification-signin");
+}
+if (action == 'signup') {
+	body.classList.add("members-notification-signup");
+}
+if (stripe == 'success') {
+	body.classList.add("members-notification-checkout-success");
+}
+</script>
+{{/contentFor}}
+{{/if}}

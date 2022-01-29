@@ -1,0 +1,57 @@
+<a href="{{url}}" class="global-link" aria-label="{{title}}"></a>
+<div class="loop-content-wrap global-flex">
+	<div class="loop-content">
+		{{#if tags}}
+		{{#foreach tags}}
+		{{#if @first}}
+		<div class="loop-tags global-tags">
+			{{/if}}
+			{{/foreach}}
+			{{#foreach tags limit="3"}}
+			<a href="{{url}}">{{name}}</a>
+			{{/foreach}}
+			{{#foreach tags}}
+			{{#if @first}}
+		</div>
+		{{/if}}
+		{{/foreach}}
+		{{/if}}
+		<h2 class="loop-title"><a href="{{url}}">{{title}}</a><span>{{>icons/site/arrow}}</span></h2>
+		{{#if custom_excerpt}}
+		<div class="loop-excerpt">
+			{{{custom_excerpt}}}
+		</div>
+		{{/if}}
+		{{!-- <div class="loop-meta global-meta">
+			<span>{{t "by"}}</span>
+			{{#has author="count:1"}}
+			{{#primary_author}}
+			<a href="{{url}}">{{name}}</a>
+			{{/primary_author}}
+			{{else}}
+			{{#has author="count:2"}}
+			{{#if authors}}
+			{{#foreach authors}}
+			<a href="{{url}}">{{name}}</a>
+			{{#if @first}}
+			<span>{{t "&"}}</span>
+			{{/if}}
+			{{/foreach}}
+			{{/if}}
+			{{else}}
+			{{#has author="count:>2"}}
+			{{#primary_author}}
+			<a href="{{url}}">{{name}}</a>
+			{{/primary_author}}
+			<span> {{t "and other authors"}}</span>
+			{{/has}}
+			{{/has}}
+			{{/has}}
+		</div> --}}
+	</div>
+</div>
+{{#if feature_image}}
+<div class="loop-image color-image global-image">
+	{{>images/feature_img_loop}}
+</div>
+{{/if}}

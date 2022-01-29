@@ -1,0 +1,48 @@
+{{#get "posts" limit="1" filter="tag:hash-pinned-hero" include="authors,tags" as |pinned_hero_post|}}
+{{#foreach pinned_hero_post visibility="all"}}
+{{>pinned_hero}}
+{{/foreach}}
+{{/get}}
+{{#get "pages" limit="1" filter="tag:hash-pinned-hero" include="authors,tags" as |pinned_hero_page|}}
+{{#foreach pinned_hero_page visibility="all"}}
+{{>pinned_hero}}
+{{/foreach}}
+{{/get}}
+<div class="pinned-section global-section global-flex global-aos" data-aos="fade-up">
+	{{#get "posts" limit="8" filter="featured:true" order="updated_at desc" include="authors,tags" as |pinned_posts|}}
+	{{#if pinned_posts}}
+	<div class="pinned-wrap pinned-posts global-flex{{#foreach posts visibility="all"}}{{#if @last}} pinned-items-{{@number}}{{/if}}{{/foreach}}{{#foreach posts visibility="all" from="4" to="4"}} pinned-items-4-or-more{{/foreach}}{{#foreach posts visibility="all" from="5" to="5"}} pinned-items-5-or-more{{/foreach}}">
+		{{#foreach posts visibility="all" to="1"}}
+		{{>pinned_post}}
+		{{/foreach}}
+		{{#foreach posts visibility="all" from="5" to="5"}}
+		<div class="pinned-items pinned-items-2-to-5 global-flex">
+			{{/foreach}}
+			{{#foreach posts visibility="all" from="2" to="5"}}
+			{{>pinned_post}}
+			{{/foreach}}
+			{{#foreach posts visibility="all" from="5" to="5"}}
+		</div>
+		{{/foreach}}
+		{{#foreach posts visibility="all" from="6" to="6"}}
+		<div class="pinned-items pinned-items-6-to-8 global-flex">
+			{{/foreach}}
+			{{#foreach posts visibility="all" from="6"}}
+			{{>pinned_post}}
+			{{/foreach}}
+			{{#foreach posts visibility="all" from="6" to="6"}}
+		</div>
+		{{/foreach}}
+	</div>
+	{{/if}}
+	{{/get}}
+	{{#get "pages" limit="2" filter="featured:true" order="updated_at desc" include="tags" as |pinned_pages|}}
+	{{#if pinned_pages}}
+	<div class="pinned-wrap pinned-pages global-flex">
+		{{#foreach pages visibility="all"}}
+		{{>pinned_page}}
+		{{/foreach}}
+	</div>
+	{{/if}}
+	{{/get}}
+</div>

@@ -1,0 +1,28 @@
+{{^is "page"}}
+{{#if @labs.members}}
+{{^if @member}}
+<div class="subscribe-section">
+	<div class="subscribe-wrap">
+		<div class="subscribe-content{{^is "post"}} global-aos" data-aos="fade-up"{{else}}"{{/is}}>
+			<form data-members-form="subscribe" class="subscribe-form">
+				<h3 class="subscribe-title">{{t "Subscribe to see what we're thinking"}}</h3>
+				<div class="subscribe-ityped">
+					<span id="ityped"></span>
+				</div>
+				<input data-members-email class="subscribe-input global-input" type="email" name="email" placeholder="{{t "Your email address"}}" aria-label="{{t "Your email address"}}">
+				<button class="subscribe-button global-button" type="submit">{{t "Subscribe"}}</button>
+				<script>
+				const iTypedText = ['{{t "Start your day with {site_title}" site_title=@site.title}}'];
+				</script>
+			</form>
+			{{>members_subscribe_alerts}}
+			<div class="subscribe-success">
+				<h3>{{t "Great!"}}</h3>
+				<p>{{t "Check your inbox and click the link to confirm your subscription"}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}
+{{/if}}
+{{/is}}

@@ -1,0 +1,11 @@
+{{#if @labs.members}}
+<li class="members-login-panel-section">
+	{{#if @member}}
+	<a class="members-account" href="{{@site.url}}/account/">{{t "Account"}}</a>
+	<a class="members-signout" href="#" data-members-signout>{{t "Sign out"}}</a>
+	{{else}}
+	<a class="members-signin" href="{{@site.url}}/signin/">{{t "Sign in"}}</a>
+	<a class="members-signup" href="{{@site.url}}/signup/">{{t "Sign up"}}</a>
+	{{/if}}
+</li>
+{{/if}}

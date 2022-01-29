@@ -1,0 +1,57 @@
+{{!< default}}
+{{#author}}
+{{#if cover_image}}
+<div class="archive-cover global-cover global-bg-image" style="background-image: url({{cover_image}})"></div>
+{{else}}
+{{#if @site.cover_image}}
+<div class="global-cover global-bg-image" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/if}}
+<div class="archive-section global-section">
+	<div class="archive-wrap global-wrap">
+		<div class="global-flex">
+			{{#if profile_image}}
+			<div class="archive-image global-image">
+				{{>images/profile_img_author}}
+			</div>
+			{{/if}}
+			<div class="archive-title-wrap global-flex is-author">
+				<div>
+					<h1 class="archive-title global-title">{{name}}</h1>
+					<div class="archive-location">
+						{{#if location}}
+						<span>{{t "from"}} {{location}}</span>
+						{{/if}}
+					</div>
+					{{#if bio}}
+					<p class="archive-description">{{bio}}</p>
+					{{/if}}
+				</div>
+			</div>
+			<div class="archive-meta global-flex is-author">
+				<div class="archive-counter is-author">
+					<div>
+						<span>{{../pagination.total}}</span>
+						<small class="global-heading">
+						{{plural ../pagination.total empty=(t "No posts") singular=(t "Post") plural=(t "Posts")}}
+						</small>
+					</div>
+				</div>
+				<div class="archive-icons global-flex">
+					{{#if website}}
+					<a href="{{website}}" aria-label="{{name}} website">{{>icons/site/link}}</a>
+					{{/if}}
+					{{#if facebook}}
+					<a href="{{facebook_url}}" aria-label="{{name}} Facebook">{{>icons/social/facebook}}</a>
+					{{/if}}
+					{{#if twitter}}
+					<a href="{{twitter_url}}" aria-label="{{name}} Twitter">{{>icons/social/twitter}}</a>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/author}}
+{{>loop}}
+{{pagination}}

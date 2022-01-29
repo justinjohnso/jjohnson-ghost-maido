@@ -1,0 +1,50 @@
+<div class="pinned-item global-item global-flex pinned-item-{{@number}}{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+	<a href="{{url}}" class="global-link" aria-label="{{^is "post"}}pinned{{else}}related{{/is}} {{title}}"></a>
+	{{^is "post"}}
+	{{!-- <div class="global-label">
+		{{t "Pinned"}}
+	</div> --}}
+	{{else}}
+	<div class="global-label">
+		{{#if tags}}
+		{{#foreach tags limit="1"}}
+		{{name}}
+		{{/foreach}}
+		{{/if}}
+	</div>
+	{{/is}}
+	<div class="pinned-content">
+		{{!-- <div class="pinned-meta global-meta">
+			<span>{{t "by"}}</span>
+			{{#has author="count:1"}}
+			{{#primary_author}}
+			<a href="{{url}}">{{name}}</a>
+			{{/primary_author}}
+			{{else}}
+			{{#has author="count:2"}}
+			{{#if authors}}
+			{{#foreach authors}}
+			<a href="{{url}}">{{name}}</a>
+			{{#if @first}}
+			<span>{{t "&"}}</span>
+			{{/if}}
+			{{/foreach}}
+			{{/if}}
+			{{else}}
+			{{#has author="count:>2"}}
+			{{#primary_author}}
+			<a href="{{url}}">{{name}}</a>
+			{{/primary_author}}
+			<span> {{t "and other authors"}}</span>
+			{{/has}}
+			{{/has}}
+			{{/has}}
+		</div> --}}
+		<h3 class="pinned-title">{{title}}</h3>
+	</div>
+	{{#if feature_image}}
+	<div class="pinned-image color-image global-image">
+		{{>images/feature_img_pinned}}
+	</div>
+	{{/if}}
+</div>

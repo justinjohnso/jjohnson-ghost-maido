@@ -1,0 +1,48 @@
+<div class="pinned-hero-section global-section">
+	<div class="pinned-hero-wrap">
+		<article class="pinned-hero-item global-item global-flex{{#if feature_image}} is-image{{/if}}{{>colors_light}}{{>colors_dark}} {{post_class}}">
+			<a href="{{url}}" class="pinned-hero-link global-link" aria-label="pinned {{title}}"></a>
+			<div class="pinned-hero-content-wrap global-flex">
+				<div class="pinned-hero-content">
+					{{!-- <div class="pinned-hero-label global-label">
+						{{t "Pinned"}}
+					</div> --}}
+					<h2 class="pinned-hero-title"><a href="{{url}}">{{title}}</a><span>{{>icons/site/arrow}}</span></h2>
+					{{^if page}}
+					<div class="pinned-hero-meta global-meta">
+						<span>{{t "by"}}</span>
+						{{#has author="count:1"}}
+						{{#primary_author}}
+						<a href="{{url}}">{{name}}</a>
+						{{/primary_author}}
+						{{else}}
+						{{#has author="count:2"}}
+						{{#if authors}}
+						{{#foreach authors}}
+						<a href="{{url}}">{{name}}</a>
+						{{#if @first}}
+						<span>{{t "&"}}</span>
+						{{/if}}
+						{{/foreach}}
+						{{/if}}
+						{{else}}
+						{{#has author="count:>2"}}
+						{{#primary_author}}
+						<a href="{{url}}">{{name}}</a>
+						{{/primary_author}}
+						<span> {{t "and other authors"}}</span>
+						{{/has}}
+						{{/has}}
+						{{/has}}
+					</div>
+					{{/if}}
+				</div>
+			</div>
+			{{#if feature_image}}
+			<div class="pinned-hero-image color-image global-image">
+				{{>images/feature_img_pinned_hero}}
+			</div>
+			{{/if}}
+		</article>
+	</div>
+</div>
